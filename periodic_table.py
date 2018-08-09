@@ -24,10 +24,10 @@ class AllElements:
         self.collect_elements()
 
     def collect_elements(self):
-        self.elements = [0]
+        self.elements = [0]    # First item is 0 to create natural index of first element.
         fin = open('elements.txt')
         lines = [i.split() for i in fin.readlines()]
-        lines.sort(key=lambda x: int(x[2]))
+        lines.sort(key=lambda x: int(x[2]))    # Sort based on atomic number.
         for i in lines:
             name = i[1].lower()
             name = Element(i[1], i[0], int(i[2]), int(i[2])*2)
@@ -36,10 +36,6 @@ class AllElements:
     def __repr__(self):
         return 'Table contains %d elements' %(len(self.elements[1:]))
 
-class PTable:
-    def __init__(self, name):
-        self.name = name
-
 elements_1 = AllElements()
 
-print(elements_1.elements[int(sys.argv[1])])
+print(elements_1.elements[int(sys.argv[1])])  # Enter atomic number from cmd line.
